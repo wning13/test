@@ -3,7 +3,7 @@ node {
         git 'https://github.com/wning13/test.git'
     }
     stage('QA') {
-        sh '/home/wn/Documents/sonar-scanner-2.8/bin/sonar-scanner'
+        sh 'sonar-scanner'
     }
     stage('build') {
         def mvnHome = tool 'M3'
@@ -13,7 +13,7 @@ node {
         sh "docker stop my || true"
         sh "docker rm my || true"
         sh "docker run --name my -p 11111:8080 -d tomcat"
-        sh "docker cp target/test.0.0.1.0-SNAPSHOT.war my:/usr/local/tomcat/webapps"
+        sh "docker cp target/test.1.0.war my:/usr/local/tomcat/webapps"
     }
     stage('results') {
         archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
