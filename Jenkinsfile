@@ -4,8 +4,9 @@ node {
     }
     stage('QA') {
         //sh 'sonar-scanner'
-        def sonarqubeScannerHome = tool name: 'SonarQubeScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-        sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -D sonar.host.url=http://192.168.11.88:9000"
+        //def sonarqubeScannerHome = tool name: 'SonarQubeScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+        //sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -D sonar.host.url=http://192.168.11.88:9000"
+        sh 'sonar-scanner'
     }
     stage('build') {
         def mvnHome = tool 'M3'
