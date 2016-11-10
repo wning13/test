@@ -3,7 +3,7 @@ node {
         git 'https://github.com/wning13/test.git'
     }
     stage('QA') {
-        sh '{$SONAR_SCANNER}/bin/sonar-scanner'
+        sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner"
     }
     stage('build') {
         def mvnHome = tool 'M3'
