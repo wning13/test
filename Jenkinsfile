@@ -3,9 +3,9 @@ node {
         git 'https://github.com/wning13/test.git'
     }
     stage('QA') {
-        sh 'sonar-scanner'
-        //def sonarqubeScannerHome = tool name: 'SonarQubeScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-        //sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -D sonar.host.url=http://192.168.43.41:9000"
+        //sh 'sonar-scanner'
+        def sonarqubeScannerHome = tool name: 'SonarQubeScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+        sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -D sonar.host.url=http://192.168.43.41:9000"
 
     }
     stage('build') {
